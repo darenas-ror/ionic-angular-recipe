@@ -11,7 +11,8 @@ import { CrudService } from '../crud.service';
 })
 export class NewRecipePage implements OnInit {
   ionicForm: FormGroup | any;
-
+  isAlertOpen!: boolean;
+  public alertButtons = ['OK'];
   constructor(private crud: CrudService, public formBuilder: FormBuilder) { }
 
   ngOnInit() {
@@ -29,7 +30,12 @@ export class NewRecipePage implements OnInit {
       await this.crud.add([this.ionicForm.value])
       return false;
     } else {
+      this.setOpen(true);
       return console.log('Please provide all the required values!');
     }
+  }
+
+  setOpen(isOpen: boolean) {
+    this.isAlertOpen = isOpen;
   }
 }

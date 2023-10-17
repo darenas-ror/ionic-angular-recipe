@@ -42,3 +42,12 @@
     </ion-footer>
   </form>
 </ion-content>
+
+<ion-alert
+  [isOpen]="isAlertOpen"
+  header="Error!!"
+  subHeader="Todos los campos son obligatorios"
+  message="verificar todos los campos!"
+  [buttons]="alertButtons"
+  (didDismiss)="setOpen(false)"
+></ion-alert>
