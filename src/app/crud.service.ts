@@ -34,9 +34,10 @@ export class CrudService {
     return await this.storage.get(key);
   }
 
-  list(){
-    let listado: any[] = []
-    this.storage.forEach((v, k) => { listado.push(v); })
+  async list(){
+    let listado: string[] = []
+
+    await this.storage.forEach((key, value, index) => { listado.push(key[0]); })
 
     return listado;
   }

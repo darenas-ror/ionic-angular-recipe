@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 1
+      Recetas
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -13,7 +13,11 @@
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <ion-list>
+    <ion-item *ngFor="let recipe of recipes">
+      <ion-label>{{ recipe.name }}</ion-label>
+    </ion-item>
+  </ion-list>
   
   <a href="/new-recipe">
     <ion-fab slot="fixed" vertical="bottom" horizontal="end">
