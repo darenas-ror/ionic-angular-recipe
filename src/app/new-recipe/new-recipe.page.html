@@ -5,41 +5,40 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Crea nueva receta</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <ion-list>
-    <ion-item>
-      <ion-input
-        label="Nombre"
-        placeholder="nombre receta"
-        #txtName
-        >
-      </ion-input>
-    </ion-item>
-  
-    <ion-item>
-      <ion-textarea
-        label="Descripcion"
-        placeholder="paso a paso de la receta"
-        #txtDescription
-        >
-      </ion-textarea>
-    </ion-item>
+  <form [formGroup]="ionicForm" (ngSubmit)="submitForm()" novalidate>
+    <ion-header collapse="condense">
+      <ion-toolbar>
+        <ion-title size="large">Crea nueva receta</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-list>
+      <ion-item>
+        <ion-input
+          label="Nombre"
+          placeholder="nombre receta"
+          formControlName="name">
+        </ion-input>
+      </ion-item>
+    
+      <ion-item>
+        <ion-textarea
+          label="Descripcion"
+          placeholder="paso a paso de la receta"
+          formControlName="description"
+          >
+        </ion-textarea>
+      </ion-item>
 
-    <ion-item>
-      <ion-checkbox
-        #txtEnable
-      >Activada?</ion-checkbox>
-    </ion-item>
-  </ion-list>
+      <ion-item>
+        <ion-checkbox
+          formControlName="available"
+        >Activada?</ion-checkbox>
+      </ion-item>
+    </ion-list>
+    <ion-footer>
+      <ion-toolbar>
+        <ion-button type="submit" color="danger" expand="block">Crear</ion-button>
+      </ion-toolbar>
+    </ion-footer>
+  </form>
 </ion-content>
-<ion-footer>
-  <ion-toolbar>
-    <io-button (click)="CreateRecipe(txtName, txtDescription, txtEnable)">
-      <ion-icon slot="icon-only" name="add"></ion-icon>
-    </io-button>
-  </ion-toolbar>
-</ion-footer>

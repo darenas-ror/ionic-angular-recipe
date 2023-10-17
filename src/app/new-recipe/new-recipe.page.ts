@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 // Importar CRUD service
 import { CrudService } from '../crud.service';
@@ -9,19 +10,26 @@ import { CrudService } from '../crud.service';
   styleUrls: ['./new-recipe.page.scss'],
 })
 export class NewRecipePage implements OnInit {
+  ionicForm: FormGroup | any;
 
-  constructor(private crud: CrudService) { }
+  constructor(private crud: CrudService, public formBuilder: FormBuilder) { }
 
   ngOnInit() {
+    this.ionicForm = this.formBuilder.group({
+      name: ['', [Validators.required, Validators.minLength(2)]],
+      description: ['', [Validators.required, Validators.minLength(2)]],
+      available: [false]
+    });
   }
 
-  async CreateRecipe(txtName:HTMLInputElement, txtDescription:HTMLInputElement, txtEnable:HTMLInputElement){
-    const data = [{
-      "name": txtName.value,
-      "description": txtDescription.value,
-      "enable": txtEnable.value
-    }]
+  async submitForm(){
+    if (this.ionicForm.valid) {
+      console.log(this.ionicForm.value);
 
-    await this.crud.add(data);
+      await this.crud.add([this.ionicForm.value])
+      return false;
+    } else {
+      return console.log('Please provide all the required values!');
+    }
   }
 }

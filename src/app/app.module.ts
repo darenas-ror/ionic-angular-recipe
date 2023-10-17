@@ -10,9 +10,11 @@ import { AppComponent } from './app.component';
 //npm install @ionic/storage-angular
 import { IonicStorageModule } from '@ionic/storage-angular';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, IonicStorageModule.forRoot()],
+  imports: [ReactiveFormsModule, FormsModule, BrowserModule, IonicModule.forRoot(), AppRoutingModule, IonicStorageModule.forRoot()],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
