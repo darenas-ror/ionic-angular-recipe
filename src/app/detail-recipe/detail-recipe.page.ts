@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
+// Importar CRUD service
+import { CrudService } from '../crud.service';
+
 @Component({
   selector: 'app-detail-recipe',
   templateUrl: './detail-recipe.page.html',
@@ -8,22 +11,22 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DetailRecipePage implements OnInit {
   data:any;
+  recipe:any;
 
   constructor(
-    private activatedRoute:ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private crud: CrudService
   ) {
-
-    this.activatedRoute.paramMap.subscribe((data) => {
-        console.log(data)
-      }
-    );
-
     this.data = this.activatedRoute.snapshot.paramMap.get('id');
 
-    console.log(" this.data ", this.data)
+    this.getRecipe(this.data)
+    
   }
 
   ngOnInit() {
   }
 
+  async getRecipe(recipe_id: any){
+    this.recipe = await this.crud.get(recipe_id)
+  }
 }
