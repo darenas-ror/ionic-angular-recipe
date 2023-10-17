@@ -27,6 +27,5 @@ export class DetailRecipePage implements OnInit {
   async getRecipe(recipe_id: any){
     this.recipe = await this.crud.get(recipe_id)
     this.recipe = this.recipe[0]
-
   }
 }
