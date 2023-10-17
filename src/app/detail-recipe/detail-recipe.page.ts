@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-detail-recipe',
@@ -6,8 +7,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./detail-recipe.page.scss'],
 })
 export class DetailRecipePage implements OnInit {
+  data:any;
 
-  constructor() { }
+  constructor(
+    private activatedRoute:ActivatedRoute
+  ) {
+
+    this.activatedRoute.paramMap.subscribe((data) => {
+        console.log(data)
+      }
+    );
+
+    this.data = this.activatedRoute.snapshot.paramMap.get('id');
+
+    console.log(" this.data ", this.data)
+  }
 
   ngOnInit() {
   }
