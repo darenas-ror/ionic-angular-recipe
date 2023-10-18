@@ -19,6 +19,7 @@ export class NewRecipePage implements OnInit {
     this.ionicForm = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(2)]],
       description: ['', [Validators.required, Validators.minLength(2)]],
+      ingredients: [''],
       available: [false]
     });
   }

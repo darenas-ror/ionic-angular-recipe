@@ -23,6 +23,11 @@
     <ion-card-content>
       {{recipe?.description}}
     </ion-card-content>
+
+    <ion-chip color="primary" *ngFor="let ing of recipe?.ingredients.split(',')">
+      {{ing}}
+    </ion-chip>
+
     <ion-card-content>
       Activado? {{recipe?.available}}
     </ion-card-content>
