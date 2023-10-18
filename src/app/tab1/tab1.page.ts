@@ -10,6 +10,7 @@ import { CrudService } from '../crud.service';
 })
 export class Tab1Page {
   recipes: any;
+  filter_recipes: any;
   constructor(private crud: CrudService) {
     console.log("contructor")
     this.getRecipes();
@@ -21,7 +22,19 @@ export class Tab1Page {
 
   async getRecipes(){
     this.recipes = await this.crud.list();
+    this.filter_recipes = this.recipes
+  }
 
-    console.log(this.recipes)
+  search(event: Event) {
+    const search_value = (event.target as HTMLTextAreaElement).value
+    if(search_value == ""){
+      this.filter_recipes = this.recipes
+    }else{
+      this.filter_recipes = this.recipes.filter((recipe:any) => recipe.name.toLowerCase().search(search_value.toLowerCase()) >= 0 );
+    }
+  }
+
+  clear(event: Event) {
+    console.log('setNewUserName', (event.target as HTMLTextAreaElement).value);
   }
 }

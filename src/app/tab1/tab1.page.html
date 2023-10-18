@@ -12,10 +12,13 @@
       <ion-title size="large">Recetas</ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-searchbar></ion-searchbar>
+  <ion-searchbar
+    (ionInput)="search($event)"
+    (ionClear)="clear($event)"
+  ></ion-searchbar>
 
   <ion-list>
-    <ion-item *ngFor="let recipe of recipes">
+    <ion-item *ngFor="let recipe of filter_recipes">
       <a href="/detail-recipe/{{recipe.id}}">
         <ion-label>{{ recipe.name }}</ion-label>
       </a>
