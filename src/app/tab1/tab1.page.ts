@@ -35,6 +35,6 @@ export class Tab1Page {
   }
 
   clear(event: Event) {
-    console.log('setNewUserName', (event.target as HTMLTextAreaElement).value);
+    this.filter_recipes = this.recipes
   }
 }
