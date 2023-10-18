@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 // Importar CRUD service
 import { CrudService } from '../crud.service';
@@ -12,8 +13,9 @@ import { CrudService } from '../crud.service';
 export class NewRecipePage implements OnInit {
   ionicForm: FormGroup | any;
   isAlertOpen!: boolean;
+  succesOpen!: boolean;
   public alertButtons = ['OK'];
-  constructor(private crud: CrudService, public formBuilder: FormBuilder) { }
+  constructor(private crud: CrudService, public formBuilder: FormBuilder, private router: Router) { }
 
   ngOnInit() {
     this.ionicForm = this.formBuilder.group({
@@ -26,9 +28,11 @@ export class NewRecipePage implements OnInit {
 
   async submitForm(){
     if (this.ionicForm.valid) {
-      console.log(this.ionicForm.value);
-
       await this.crud.add([this.ionicForm.value])
+      this.succesOpen = true;
+
+      this.router.navigateByUrl('/');
+
       return false;
     } else {
       this.setOpen(true);

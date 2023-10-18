@@ -39,9 +39,6 @@ export class CrudService {
 
     await this.storage.forEach((key, value, index) => { listado.push({id: index, ...key[0]}); })
 
-    console.log("listado")
-    console.log(listado)
-
     return listado;
   }
 
