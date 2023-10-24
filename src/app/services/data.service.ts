@@ -28,6 +28,9 @@ export class DataService {
   }
 
   AddRecipe(recipe: Recipe) {
+    console.log(" ** addDoc ** ")
+    console.log(recipe)
+
     const itemCollection = collection(this.firestore, 'recipes');    
     return addDoc(itemCollection, recipe);
   }
