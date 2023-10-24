@@ -15,5 +15,11 @@
       <ion-title>Menu</ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-content class="ion-padding"> Tap the button in the toolbar to open the menu. </ion-content>
+  <ion-list>
+    <ion-item *ngFor="let item of item$ | async">
+      <a href="/detail-recipe/{{item.name}}">
+        <ion-label>{{ item.name }}</ion-label>
+      </a>
+    </ion-item>
+  </ion-list>
 </div>

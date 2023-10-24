@@ -7,7 +7,9 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { environment } from 'src/environments/environment';
+import { environment } from '../environments/environment';
+
+// Firebase
 import { provideFirebaseApp, getApp, initializeApp  } from '@angular/fire/app'
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 

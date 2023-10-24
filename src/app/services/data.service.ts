@@ -1,16 +1,14 @@
-import { Injectable } from '@angular/core';
-import { Firestore, collectionData } from '@angular/fire/firestore';
-import { collection } from 'firebase/firestore';
+import { Injectable, inject } from '@angular/core';
+import { Firestore, collectionData, collection } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
-
-  constructor(private firestone: Firestore) { }
+  constructor(private firestore: Firestore) { }
 
   getRecipes(){
-    const recipesRef = collection(this.firestone, 'recipes');
-    return collectionData(recipesRef);
+    const itemCollection = collection(this.firestore, 'recipes');    
+    return collectionData(itemCollection);
   }
 }
