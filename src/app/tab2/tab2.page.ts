@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { DataService } from '../services/data.service';
-import { AlertController } from '@ionic/angular';
+import { AlertController, ModalController } from '@ionic/angular';
+import { ModalPage } from '../modal/modal.page';
 
 @Component({
   selector: 'app-tab2',
@@ -10,10 +11,25 @@ import { AlertController } from '@ionic/angular';
 export class Tab2Page {
   recipes: any[] = [];
 
-  constructor(private dataService: DataService, private alertCtrl: AlertController) {
+  constructor(
+    private dataService: DataService,
+    private alertCtrl: AlertController,
+    private modalCtrl: ModalController
+  ) {
     this.dataService.getRecipes().subscribe(res => {
       this.recipes = res;
     })
+  }
+
+  async openRecipe(recipe: { id: any; name: any; description: any; }){
+    const modal = await this.modalCtrl.create({
+      component: ModalPage,
+      componentProps: { id: recipe.id, name: recipe.name, description: recipe.description },
+      breakpoints: [0, 0.5, 0.8],
+      initialBreakpoint: 0.5
+    })
+
+    modal.present();
   }
 
   async addRecipes(){

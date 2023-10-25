@@ -1,0 +1,41 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Detalle de la recetas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">{{recipe?.name}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div *ngIf="recipe">
+    <ion-item>
+      <ion-label position="stacked">Nombre</ion-label>
+      <ion-input [(ngModel)]="recipe.name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Descripcion</ion-label>
+      <ion-input [(ngModel)]="recipe.description"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">ingredients</ion-label>
+      <ion-input [(ngModel)]="recipe.ingredients"></ion-input>
+    </ion-item>
+  </div>
+
+
+  <ion-button expand="block" color="success" (click)="updateNote()">
+    <ion-icon name="save" slot="start"></ion-icon>
+    Actualizar
+  </ion-button>
+
+  <ion-button expand="block" color="danger" (click)="deleteNote()">
+    <ion-icon name="trash" slot="start"></ion-icon>
+    Eliminar
+  </ion-button>
+</ion-content>

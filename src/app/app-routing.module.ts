@@ -13,6 +13,10 @@ const routes: Routes = [
   {
     path: 'detail-recipe/:id',
     loadChildren: () => import('./detail-recipe/detail-recipe.module').then( m => m.DetailRecipePageModule)
+  },
+  {
+    path: 'modal',
+    loadChildren: () => import('./modal/modal.module').then( m => m.ModalPageModule)
   }
 ];
 @NgModule({

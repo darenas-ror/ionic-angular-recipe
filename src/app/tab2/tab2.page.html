@@ -17,10 +17,8 @@
   </ion-header>
   <ion-content>
     <ion-list>
-      <ion-item *ngFor="let recipe of recipes">
-        <a href="/detail-firebase-recipe/{{recipe.id}}">
-          <ion-label>{{ recipe?.name }}</ion-label>
-        </a>
+      <ion-item *ngFor="let recipe of recipes" (click)="openRecipe(recipe)" >
+        <ion-label>{{ recipe?.name }}</ion-label>
       </ion-item>
     </ion-list>
 
