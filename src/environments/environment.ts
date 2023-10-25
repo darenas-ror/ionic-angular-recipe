@@ -5,13 +5,6 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: "AIzaSyDN1246486hW4yxy6IjfcDRXcy81kHdsec",
-    authDomain: "recipes-demo-e0947.firebaseapp.com",
-    projectId: "recipes-demo-e0947",
-    storageBucket: "recipes-demo-e0947.appspot.com",
-    messagingSenderId: "607028266858",
-    appId: "1:607028266858:web:6a5c691c997ce1efd50713",
-    measurementId: "G-JL2B764YMD"  
   }
 };
 
