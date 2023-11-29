@@ -39,4 +39,14 @@ export class PostServiceService {
       });
     });
   }
+
+  editPosts(id: any, data: any){
+    return new Promise(resolve=>{
+      this.http.patch(this.url + "/" + id, JSON.stringify(data)).subscribe(data=>{
+          resolve(data);
+      },error=>{
+        console.log(error);
+      });
+    });
+  }
 }
