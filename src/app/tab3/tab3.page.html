@@ -13,5 +13,23 @@
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <ion-content padding>
+    <ion-card *ngFor="let post of arrayPosts">
+      <ion-card-header>
+        <ion-card-title>{{post.title}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>{{post.body}}</p>
+      </ion-card-content>
+
+        <ion-button fill="clear">Editar</ion-button>
+        <ion-button fill="clear" (click)="deletePost(post.id)">Eliminar</ion-button>
+    </ion-card>
+  </ion-content>
+
+  <ion-fab vertical="botton" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="addPost()">
+    <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

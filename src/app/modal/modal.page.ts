@@ -27,7 +27,7 @@ export class ModalPage implements OnInit {
     this.dataService.UpdateRecipe(this.recipe);
     const toast = await this.toastCtrl.create({
       message: "Receta actualizada",
-      duration: 1000
+      duration: 2000
     })
 
     toast.present();
